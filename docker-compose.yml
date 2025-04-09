@@ -1,21 +1,20 @@
-version: '3.8'
+version: '3'
 
 services:
   hornet:
-    image: iotaledger/hornet:latest
-    container_name: hornet_node
+    image: iotaledger/hornet:2.0.0-rc.5
+    container_name: hornet
     ports:
       - "14265:14265"
+      - "8081:8081"
       - "15600:15600"
+      - "14626:14626/udp"
     volumes:
-      - ./db:/app/db
-      - ./snapshots:/app/snapshots
-    restart: unless-stopped
+      - ./snapshots:/app/snapshots          # Cleaned path
+      - ./hornet:/app/config
+    environment:
+      - HORNET_SNAPSHOT_FULLPATH=/app/snapshots/latest-full_snapshot.bin
+    command: >
+      --config=/app/config/config.json
+      --snapshots.fullPath=/app/snapshots/latest-full_snapshot.bin
 
-  mqtt:
-    image: eclipse-mosquitto
-    container_name: mqtt_broker
-    ports:
-      - "1883:1883"
-      - "9001:9001"
-    restart: unless-stopped
