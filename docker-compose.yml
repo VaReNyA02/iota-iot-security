@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  hornet:
+    image: iotaledger/hornet:latest
+    container_name: hornet_node
+    ports:
+      - "14265:14265"
+      - "15600:15600"
+    volumes:
+      - ./db:/app/db
+      - ./snapshots:/app/snapshots
+    restart: unless-stopped
+
+  mqtt:
+    image: eclipse-mosquitto
+    container_name: mqtt_broker
+    ports:
+      - "1883:1883"
+      - "9001:9001"
+    restart: unless-stopped
