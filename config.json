@@ -1,0 +1,54 @@
+{
+  "restAPI": {
+    "bindAddress": "0.0.0.0:14265",
+    "restAPIBindAddress": "0.0.0.0:14265",
+    "publicRoutes": [
+      "/api/v1/*",
+      "/api/v2/*"
+    ],
+    "protectedRoutes": [],
+    "jwtAuth": {
+      "enabled": false
+    }
+  },
+  "dashboard": {
+    "bindAddress": "0.0.0.0:8081",
+    "dev": false
+  },
+  "db": {
+    "path": "mainnetdb",
+    "autoRevalidation": false
+  },
+  "protocol": {
+    "networkID": "shimmer",
+    "bech32HRP": "smr"
+  },
+  "p2p": {
+    "bindMultiAddresses": [
+      "/ip4/0.0.0.0/tcp/15600"
+    ],
+    "peers": [
+      "/dns/entry-nodes.shimmer.network/tcp/15600/p2p/12D3KooWCKwcTWevoRKa2kEBputeGASvEBuDfRDSbe8t1DWugUmL",
+      "/dns/entry-nodes.shimmer.network/tcp/15600/p2p/12D3KooWDgStT5WnCKtKRtd47eWnaqDou8RdXDRt2Y4LV7Line4u"
+    ],
+    "autopeering": {
+      "enabled": true,
+      "bindAddress": "0.0.0.0:14626",
+      "entryNodes": [
+        "/dns/entry-hornet-0.shimmer.network/udp/14626/autopeering/HhjyzkmL7HEGQW89y8Xh9uTzy1TTiDcbpn7BpMKzXhz7",
+        "/dns/entry-hornet-1.shimmer.network/udp/14626/autopeering/Gm2Boov4N5V1AQPZXbGBvef4LQzVg2H5wvvca6oBjQnQ"
+      ]
+    }
+  },
+  "logger": {
+    "level": "info",
+    "disableCaller": false,
+    "encoding": "console"
+  },
+  "snapshots": {
+    "enabled": true,
+    "downloadURLs": [
+      "https://files.shimmer.network/snapshots/latest-full_snapshot.bin"
+    ]
+  }
+}
